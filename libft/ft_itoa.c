@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pjang <pjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 13:46:00 by pjang             #+#    #+#             */
+/*   Updated: 2022/04/18 13:56:48 by pjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static long long int	ft_pow(int n, int power)
@@ -20,10 +32,20 @@ static int	digits_of(long long int n)
 	int	result;
 	int	power;
 
-	result = (power = 0);
+	result = 0;
+	power = 0;
 	while (n / ft_pow(10, power++))
 		result++;
 	return (result);
+}
+
+static void	n_is_zero(int n, char **buf)
+{
+	if (n == 0)
+	{
+		*buf[0] = '0';
+		*buf += 1;
+	}
 }
 
 char	*ft_itoa(int n)
@@ -39,6 +61,7 @@ char	*ft_itoa(int n)
 	if (!result)
 		return (NULL);
 	buf = result;
+	n_is_zero(n, &buf);
 	if (tmp < 0)
 	{
 		tmp = -tmp;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pjang <pjang@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
+/*   Updated: 2022/04/18 13:57:18 by pjang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	get_total_len(const char *s1, const char *s2)
@@ -5,7 +17,8 @@ static int	get_total_len(const char *s1, const char *s2)
 	int	len1;
 	int	len2;
 
-	len1 = (len2 = 0);
+	len1 = 0;
+	len2 = 0;
 	while (s1[len1])
 		len1++;
 	while (s2[len2])
