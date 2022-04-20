@@ -29,7 +29,7 @@ void	ft_putnbr_fd(int n, int fd)
 	tmp = n;
 	if (tmp < 0)
 	{
-		write(1, "-", 1);
+		write(fd, "-", 1);
 		tmp = -tmp;
 	}
 	put_recursive(tmp, fd);

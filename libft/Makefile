@@ -47,7 +47,7 @@ SRCS	= 	ft_atoi.c \
 			ft_strtrim.c \
 			ft_substr.c \
 			ft_tolower.c \
-			ft_toupper.c \
+			ft_toupper.c
 
 B_SRCS =	ft_lstadd_back.c \
 			ft_lstadd_front.c \
@@ -57,7 +57,7 @@ B_SRCS =	ft_lstadd_back.c \
 			ft_lstlast.c \
 			ft_lstmap.c \
 			ft_lstnew.c \
-			ft_lstsize.c \
+			ft_lstsize.c
 
 OBJS	= $(SRCS:.c=.o)
 B_OBJS	= $(B_SRCS:.c=.o)
@@ -65,14 +65,19 @@ NAME	= libft.a
 LIBC	= ar -rcs
 LIBR	= ranlib
 RM		= rm -f
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJS) $(B_OBJS)
+else
+OBJ_FILES = $(OBJS)
+endif
 
-all : $(NAME) bonus
+all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(LIBC) $(NAME) $(OBJS)
+$(NAME) : $(OBJ_FILES)
+	$(LIBC) $(NAME) $(OBJ_FILES)
 
-bonus : $(B_OBJS)
-	$(LIBC) $(NAME) $(B_OBJS)
+bonus :
+	make WITH_BONUS=1 all
 
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I $(INCS)
@@ -86,4 +91,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all bonus clean fclean re
