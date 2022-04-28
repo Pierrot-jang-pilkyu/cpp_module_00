@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:46 by pjang             #+#    #+#             */
-/*   Updated: 2022/04/27 21:40:10 by pjang            ###   ########.fr       */
+/*   Updated: 2022/04/28 17:23:31 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-size_t	get_index(char *str)
+long long	get_index(char *str)
 {
-	size_t	i;
-	size_t	len;
+	long long	i;
+	long long	len;
 
 	len = ft_strlen(str);
 	i = 0;

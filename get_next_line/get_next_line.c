@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:31 by pjang             #+#    #+#             */
-/*   Updated: 2022/04/27 21:41:59 by pjang            ###   ########.fr       */
+/*   Updated: 2022/04/28 17:28:34 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,32 @@ void	safe_free(char **str)
 	}
 }
 
-void	refresh(int mode, char **str, char *buffer)
+void	refresh(long long mode, char **str, char **buffer, char *temp)
 {
-	char	*temp;
-
-	if (mode == 1)
+	if (mode == -1)
 	{
 		temp = ft_strdup(*str);
 		safe_free(str);
-		*str = ft_strjoin(temp, buffer);
+		*str = ft_strjoin(temp, *buffer);
 		safe_free(&temp);
 	}
-	if (mode == 2)
+	else if (mode == -2)
 	{
 		safe_free(str);
-		*str = ft_strdup(buffer);
+		*str = ft_strdup(*buffer);
 	}
+	else if (mode >= 0)
+	{
+		temp = ft_substr(*buffer, 0, mode + 1);
+		*str = ft_substr(*buffer, mode, ft_strlen(*buffer));
+		safe_free(buffer);
+		*buffer = temp;
+	}
+	if (mode > -3)
+		return ;
+	safe_free(str);
+	*str = ft_strdup(temp);
+	safe_free(&temp);
 }
 
 int	is_division(long long idx, char **s1, char **s2, char **s3)
@@ -55,16 +65,17 @@ int	is_division(long long idx, char **s1, char **s2, char **s3)
 		else
 			*s3 = ft_strjoin(*s1, temp);
 		safe_free(&temp);
-		refresh(2, s1, buffer + idx);
+		buffer += idx;
+		refresh(-2, s1, &buffer, NULL);
 		return (1);
 	}
 	if (s1[0][0] == '\n' && s1[0][1] == '\0')
 	{
 		safe_free(s1);
-		refresh(1, s1, buffer);
+		refresh(-1, s1, &buffer, NULL);
 	}
 	else
-		refresh(1, s1, buffer);
+		refresh(-1, s1, &buffer, NULL);
 	return (0);
 }
 
@@ -111,9 +122,17 @@ char	*get_next_line(int fd)
 	if (!result)
 	{
 		if (temp && !str)
+		{
+			if (get_index(temp) != -1)
+				refresh(get_index(temp), &str, &temp, NULL);
 			return (temp);
+		}
+		safe_free(&temp);
+		if (str && *str == '\n')
+			refresh(-3, &str, &temp, ft_strdup(str + 1));
 		return (ft_strdup(str));
 	}
+	safe_free(&temp);
 	return (result);
 }
 
@@ -144,25 +163,43 @@ char	*get_next_line(int fd)
 // 	int fd;
 // 	char *str;
 
-// 	fd = open("gnlTester/files/41_with_nl", O_RDWR);
+// 	fd = open("gnlTester/files/multiple_line_no_nl", O_RDWR);
 // 	/* 1 */ str = get_next_line(fd);
-// 	if (ft_strcmp(str, "0123456789012345678901234567890123456789\n") == 0)
+// 	if (ft_strcmp(str, "01234567890123456789012345678901234567890\n") == 0)
 // 		print_result("OK");
 // 	else
 // 		print_result("KO");
 // 	safe_free(&str);
 // 	/* 2 */ str = get_next_line(fd);
-// 	if (ft_strcmp(str, "0") == 0)
+// 	if (ft_strcmp(str, "987654321098765432109876543210987654321098\n") == 0)
 // 		print_result("OK");
 // 	else
 // 		print_result("KO");
 // 	safe_free(&str);
 // 	/* 3 */ str = get_next_line(fd);
+// 	if (ft_strcmp(str, "0123456789012345678901234567890123456789012\n") == 0)
+// 		print_result("OK");
+// 	else
+// 		print_result("KO");
+// 	safe_free(&str);
+// 	/* 4 */ str = get_next_line(fd);
+// 	if (ft_strcmp(str, "987654321098765432109876543210987654321098\n") == 0)
+// 		print_result("OK");
+// 	else
+// 		print_result("KO");
+// 	safe_free(&str);
+// 	/* 5 */ str = get_next_line(fd);
+// 	if (ft_strcmp(str, "01234567890123456789012345678901234567890") == 0)
+// 		print_result("OK");
+// 	else
+// 		print_result("KO");
+// 	safe_free(&str);
+// 	/* 6 */ str = get_next_line(fd);
 // 	if (str == NULL)
 // 		print_result("OK");
 // 	else
 // 		print_result("KO");
-// //	safe_free(&str);
+// 	safe_free(&str);
 // 	close(fd);
 	
 // }
