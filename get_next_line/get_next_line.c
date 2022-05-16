@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:31 by pjang             #+#    #+#             */
-/*   Updated: 2022/05/16 17:56:55 by pjang            ###   ########.fr       */
+/*   Updated: 2022/05/16 18:47:49 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*temp;
 
-	if (fd > 8192)
+	if (fd >= OPEN_MAX)
 		return (NULL);
 	temp = NULL;
 	division_str(&str, fd);
