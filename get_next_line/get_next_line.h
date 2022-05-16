@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:39 by pjang             #+#    #+#             */
-/*   Updated: 2022/04/28 17:23:23 by pjang            ###   ########.fr       */
+/*   Updated: 2022/05/16 16:37:32 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 /* get_next_line.c */
 
 char		*get_next_line(int fd);
-char		*division_str(char **str, int fd);
+void		division_str(char **str, int fd);
 void		clear(int mode, char **str, char **buffer);
-int			is_division(long long idx, char **s1, char **s2, char **s3);
 void		refresh(long long mode, char **str, char **buffer, char *temp);
 
 /* get_next_line_utils.c */
