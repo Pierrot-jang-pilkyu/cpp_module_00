@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:44:06 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 03:24:33 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:16:30 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ void	get_map_char(t_player *player, t_map *map, t_point point, t_bound *b)
 	}
 }
 
+void	init_point(t_point *point)
+{
+	point->x = 0;
+	point->y = 0;
+	point->map_c = '\0';
+}
+
 int	keypress(int keycode, t_vars *vars)
 {
 	t_bound	bound;
 	t_point	tmp_p;
 
+	init_point(&tmp_p);
 	get_map_char(vars->player, vars->map, tmp_p, &bound);
 	if (keycode == KEY_W)
 		move_w(vars->player, bound, vars->map, vars);

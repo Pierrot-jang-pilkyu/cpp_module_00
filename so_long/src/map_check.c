@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:56:47 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 00:18:19 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:13:20 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,23 @@ void	char_check(t_map *map)
 void	least_check(t_map *map)
 {
 	int		i;
-	int		j;
 	char	c;
 	t_list	*temp;
 
 	temp = map->map;
 	while (temp)
 	{
-		j = 0;
-		while (*((char *)temp->content + j))
+		i = 0;
+		while (*((char *)temp->content + i))
 		{
-			c = *((char *)temp->content + j);
+			c = *((char *)temp->content + i);
 			if (c == 'P')
 				map->p_num++;
 			else if (c == 'C')
 				map->c_num++;
 			else if (c == 'E')
 				map->e_num++;
-			j++;
+			i++;
 		}
 		temp = temp->next;
 	}

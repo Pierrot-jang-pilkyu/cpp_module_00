@@ -6,13 +6,11 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:31 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/21 05:57:51 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 06:11:22 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-#include <stdio.h>
+#include "libft.h"
 
 void	safe_free(char **str)
 {

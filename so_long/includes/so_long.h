@@ -6,15 +6,14 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:44:13 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 03:26:24 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 05:12:38 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "../minilibx_opengl/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -94,7 +93,7 @@ void	get_player_position(t_map *map, t_player *player);
 
 // game execution
 int		game_close(t_vars *vars);
-int		game_clear(t_player *player, t_map *map);
+int		game_clear(t_player *player);
 void	map_regen(t_map *map, t_player *pl, t_point p);
 void	move_w(t_player *pl, t_bound b, t_map *map, t_vars *vars);
 void	move_a(t_player *pl, t_bound b, t_map *map, t_vars *vars);

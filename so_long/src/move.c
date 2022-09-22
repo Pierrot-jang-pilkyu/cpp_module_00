@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:05:23 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 02:30:37 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:11:25 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	move_w(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 	t_point	tmp_p;
 
 	if (b.w == 'E' && pl->success_flag)
-		game_clear(pl, map);
+		game_clear(pl);
 	else if (b.w == 'C')
 	{
 		if (--map->c_num == 0)
@@ -39,7 +39,7 @@ void	move_a(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 	t_point	tmp_p;
 
 	if (b.a == 'E' && pl->success_flag)
-		game_clear(pl, map);
+		game_clear(pl);
 	else if (b.a == 'C')
 	{
 		if (--map->c_num == 0)
@@ -61,7 +61,7 @@ void	move_s(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 	t_point	tmp_p;
 
 	if (b.s == 'E' && pl->success_flag)
-		game_clear(pl, map);
+		game_clear(pl);
 	else if (b.s == 'C')
 	{
 		if (--map->c_num == 0)
@@ -83,7 +83,7 @@ void	move_d(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 	t_point	tmp_p;
 
 	if (b.d == 'E' && pl->success_flag)
-		game_clear(pl, map);
+		game_clear(pl);
 	else if (b.d == 'C')
 	{
 		if (--map->c_num == 0)

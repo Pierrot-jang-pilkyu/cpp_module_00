@@ -6,11 +6,11 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 14:03:46 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/21 06:02:51 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 06:11:06 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 long long	get_index(char *str)
 {

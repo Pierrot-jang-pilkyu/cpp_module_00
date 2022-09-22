@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 03:17:47 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 05:17:35 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ void	ft_mlx_img(t_map *map, t_player *player, t_vars *vars)
 {
 	char	col[30];
 
-	ft_memcpy(col, "../texture/collection_star.xpm", 31);
+	ft_memcpy(col, "texture/collection_star.xpm", 31);
 	map->img_base.img = mlx_xpm_file_to_image(vars->mlx, \
-	"../texture/base_sky.xpm", &map->img_base.width, &map->img_base.height);
+	"texture/base_sky.xpm", &map->img_base.width, &map->img_base.height);
 	map->img_wall.img = mlx_xpm_file_to_image(vars->mlx, \
-	"../texture/wall_cloud.xpm", &map->img_wall.width, &map->img_wall.height);
+	"texture/wall_cloud.xpm", &map->img_wall.width, &map->img_wall.height);
 	map->img_col.img = mlx_xpm_file_to_image(vars->mlx, \
 	col, &map->img_col.width, &map->img_col.height);
 	map->img_play.img = mlx_xpm_file_to_image(vars->mlx, \
-	"../texture/player_angel.xpm", &map->img_play.width, &map->img_play.height);
+	"texture/player_angel.xpm", &map->img_play.width, &map->img_play.height);
 	map->img_esc.img = mlx_xpm_file_to_image(vars->mlx, \
-	"../texture/escape_hole.xpm", &map->img_esc.width, &map->img_esc.height);
+	"texture/escape_hole.xpm", &map->img_esc.width, &map->img_esc.height);
 	img_to_window(map, player, vars);
 	vars->map = map;
 	vars->player = player;
