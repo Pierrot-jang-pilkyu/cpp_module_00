@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   print_nbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 14:03:46 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/21 06:02:51 by pjang            ###   ########.fr       */
+/*   Created: 2022/05/30 20:13:54 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:15:55 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-long long	get_index(char *str)
+void	print_nbr_base(long long nbr, char *base, size_t *result)
 {
-	long long	i;
-	long long	len;
+	int	radix;
 
-	len = ft_strlen(str);
-	i = 0;
-	while (i < len)
+	radix = ft_strlen(base);
+	if (nbr < 0)
 	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
+		ft_putchar_fd('-', 1);
+		*result += 1;
+		nbr = -nbr;
 	}
-	return (-1);
+	if (nbr >= radix)
+	{
+		print_nbr_base(nbr / radix, base, result);
+		print_nbr_base(nbr % radix, base, result);
+	}
+	if (nbr < radix)
+	{
+		ft_putchar_fd(*(base + nbr), 1);
+		*result += 1;
+	}
 }

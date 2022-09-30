@@ -6,39 +6,61 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:44:06 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/22 20:45:07 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/30 12:23:34 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// Hooking은 소프트웨어 공학 용어로, 운영 체제나 응용 소프트웨어 등의 각종 컴퓨터 프로그램에서
-// 소프트웨어 구성 요소 간에 발생하는 함수 호출, 메시지, 이벤트 등을 중간에서 바꾸거나
-// 가로채는 명령, 방법, 기술이나 행위를 말한다.
-// mlx를 사용하면서 생길 후킹은 마우스 클릭이나 자판 입력을 감지하고 가져온다 생각해도 무방하다.
-// 이벤트 발생시 호출될 함수
-void	keypress(int keycode, t_vars *vars, t_player *player, t_map *map)
+void	get_map_char(t_player *player, t_map *map, t_point point, t_bound *b)
 {
+	t_list	*temp;
+
+	point.y = 0;
+	temp = map->map;
+	while (temp)
+	{
+		point.x = -1;
+		while (++point.x < map->row)
+		{
+			point.map_c = *((char *)temp->content + point.x);
+			if ((point.y == player->y - 1) && (point.x == player->x))
+				b->w = point.map_c;
+			else if ((point.y == player->y) && (point.x == player->x - 1))
+				b->a = point.map_c;
+			else if ((point.y == player->y + 1) && (point.x == player->x))
+				b->s = point.map_c;
+			else if ((point.y == player->y) && (point.x == player->x + 1))
+				b->d = point.map_c;
+		}
+		temp = temp->next;
+		point.y++;
+	}
+}
+
+void	init_point(t_point *point)
+{
+	point->x = 0;
+	point->y = 0;
+	point->map_c = '\0';
+}
+
+int	keypress(int keycode, t_vars *vars)
+{
+	t_bound	bound;
+	t_point	tmp_p;
+
+	init_point(&tmp_p);
+	get_map_char(vars->player, vars->map, tmp_p, &bound);
 	if (keycode == KEY_W)
-	{
-		player->y++;
-		printf("Step : %d\n", ++player->step);
-	}
+		move_w(vars->player, bound, vars->map, vars);
 	else if (keycode == KEY_A)
-	{
-		player->x--;
-		printf("Step : %d\n", ++player->step);
-	}
+		move_a(vars->player, bound, vars->map, vars);
 	else if (keycode == KEY_S)
-	{
-		player->y--;
-		printf("Step : %d\n", ++player->step);
-	}
+		move_s(vars->player, bound, vars->map, vars);
 	else if (keycode == KEY_D)
-	{
-		player->x++;
-		printf("Step : %d\n", ++player->step);
-	}
+		move_d(vars->player, bound, vars->map, vars);
 	else if (keycode == KEY_ESC)
-		mlx_destroy_window(vars->mlx, vars->win);
+		game_close(vars);
+	return (0);
 }

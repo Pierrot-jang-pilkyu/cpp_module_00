@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:54:08 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/22 14:57:22 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/22 23:19:46 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	get_player_position(t_map *map, t_player *player)
 			c = *((char *)temp->content + j);
 			if (c == 'P')
 			{
-				player->x = i;
-				player->y = j;
+				player->x = j;
+				player->y = i;
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 02:56:47 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/22 14:53:58 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/23 04:13:20 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	wall_check(t_map *map)
 	int		first;
 	t_list	*temp;
 
-	len = get_linelen((char *)map->map->content);
+	len = map->row;
 	temp = map->map;
 	first = 1;
 	while (temp)
@@ -60,24 +60,23 @@ void	char_check(t_map *map)
 void	least_check(t_map *map)
 {
 	int		i;
-	int		j;
 	char	c;
 	t_list	*temp;
 
 	temp = map->map;
 	while (temp)
 	{
-		j = 0;
-		while (*((char *)temp->content + j))
+		i = 0;
+		while (*((char *)temp->content + i))
 		{
-			c = *((char *)temp->content + j);
+			c = *((char *)temp->content + i);
 			if (c == 'P')
 				map->p_num++;
 			else if (c == 'C')
 				map->c_num++;
 			else if (c == 'E')
 				map->e_num++;
-			j++;
+			i++;
 		}
 		temp = temp->next;
 	}
@@ -106,4 +105,6 @@ void	map_check(t_map *map)
 	wall_check(map);
 	char_check(map);
 	least_check(map);
+	if (map->p_num > 1)
+		put_error("Player is only one.");
 }

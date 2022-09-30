@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   game_clear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/09/23 00:06:47 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:18:07 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	game_clear(t_player *player)
 {
-	char	*buf;
-	char	*join;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	ft_printf("Steps : %d\n", ++player->step);
+	ft_printf("\nCongratuation! The game has been cleared.\n\n");
+	exit(0);
 }

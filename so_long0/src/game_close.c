@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   game_close.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/09/23 01:10:36 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/23 03:16:19 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/so_long.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	game_close(t_vars *vars)
 {
-	char	*buf;
-	char	*join;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
 }

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/05/30 19:07:49 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:16:41 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	ft_printf(const char *format, ...)
 {
-	char	*buf;
-	char	*join;
+	size_t	idx;
+	size_t	result;
+	va_list	ap;
 
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	idx = 0;
+	result = 0;
+	va_start(ap, format);
+	while (idx != ft_strlen(format))
+	{
+		if (format[idx] == '%')
+		{
+			idx++;
+			if (format[idx] != '\0' )
+				put_format(format, &result, &idx, &ap);
+		}
+		while (format[idx] && format[idx] != '%')
+		{
+			print_char(format[idx], &result);
+			idx++;
+		}
+	}
+	va_end(ap);
+	return (result);
 }
