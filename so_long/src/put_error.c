@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:26:29 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/21 05:54:46 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/29 17:31:13 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_error(char *message)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(message, 2);
 	write(2, "\n", 1);
 	exit(1);

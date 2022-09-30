@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 14:00:36 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 06:13:31 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/29 16:15:22 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,27 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# define DECIMAL "0123456789"
+# define HEXA_DECIMAL_UP "0123456789ABCDEF"
+# define HEXA_DECIMAL_LOW "0123456789abcdef"
 # define OPEN_MAX (10240)
+
+// ft_printf
+
+int			ft_printf(const char *format, ...);
+void		get_conversion_index(const char *format, size_t *idx);
+void		put_format(const char *format, size_t *result, \
+				size_t *idx, va_list *ap);
+int			is_conversion(char c);
+void		put_nonflag(char c, va_list *ap, size_t *result);
+
+// print
+
+void		print_char(char c, size_t *result);
+void		print_str(char *str, size_t *result);
+void		print_nbr_base(long long nbr, char *base, size_t *result);
+void		print_ptr(unsigned long ptr, size_t *result);
 
 /* get_next_line.c */
 

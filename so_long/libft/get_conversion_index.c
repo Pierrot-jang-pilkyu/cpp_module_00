@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_conversion_index.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/05/30 19:40:54 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:15:40 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	get_conversion_index(const char *format, size_t *idx)
 {
-	char	*buf;
-	char	*join;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	while (format[*idx])
+	{
+		if (format[*idx] == '%')
+		{
+			*idx += 1;
+			break ;
+		}
+		*idx += 1;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 04:06:07 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/22 22:46:43 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/30 15:32:24 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	del_newline(t_map *map)
 
 	temp = map->map;
 	str = (char *)temp->content;
-	len = get_linelen(str);
 	while (temp)
 	{
+		len = get_linelen((char *)temp->content);
 		*((char *)temp->content + len) = '\0';
 		temp = temp->next;
 		map->col++;
@@ -53,7 +53,7 @@ void	get_map(t_map *map)
 	if (fd == -1)
 		put_error("fd(-1) : File open failure.");
 	temp = get_next_line(fd);
-	if (*temp == '\0')
+	if (!temp)
 		put_error("Empty file.");
 	ft_lstadd_back(&map->map, ft_lstnew((void *)temp));
 	while (1)

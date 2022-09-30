@@ -6,7 +6,7 @@
 #    By: pjang <student.42seoul.kr>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 13:37:58 by pjang             #+#    #+#              #
-#    Updated: 2022/09/23 04:55:43 by pjang            ###   ########.fr        #
+#    Updated: 2022/09/29 16:12:52 by pjang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,16 @@ SRCS	= 	ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c \
 			get_next_line.c \
-			get_next_line_utils.c
+			get_next_line_utils.c \
+			ft_printf.c \
+			get_conversion_index.c \
+			is_conversion.c \
+			print_char.c \
+			print_nbr_base.c \
+			print_ptr.c \
+			print_str.c \
+			put_format.c \
+			put_nonflag.c
 
 B_SRCS =	ft_lstadd_back.c \
 			ft_lstadd_front.c \

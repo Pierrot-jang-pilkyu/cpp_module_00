@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   print_nbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/05/30 20:13:54 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:15:55 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void	print_nbr_base(long long nbr, char *base, size_t *result)
 {
-	char	*buf;
-	char	*join;
+	int	radix;
 
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	radix = ft_strlen(base);
+	if (nbr < 0)
+	{
+		ft_putchar_fd('-', 1);
+		*result += 1;
+		nbr = -nbr;
+	}
+	if (nbr >= radix)
+	{
+		print_nbr_base(nbr / radix, base, result);
+		print_nbr_base(nbr % radix, base, result);
+	}
+	if (nbr < radix)
+	{
+		ft_putchar_fd(*(base + nbr), 1);
+		*result += 1;
+	}
 }

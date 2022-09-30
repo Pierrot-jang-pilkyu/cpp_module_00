@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:05:23 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/23 04:11:25 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/29 16:18:45 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_w(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 		tmp_p.y = pl->y;
 		pl->y--;
 		map_regen(map, pl, tmp_p);
-		printf("Steps : %d\n", ++pl->step);
+		ft_printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
 	}
 }
@@ -51,7 +51,7 @@ void	move_a(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 		tmp_p.y = pl->y;
 		pl->x--;
 		map_regen(map, pl, tmp_p);
-		printf("Steps : %d\n", ++pl->step);
+		ft_printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
 	}
 }
@@ -73,7 +73,7 @@ void	move_s(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 		tmp_p.y = pl->y;
 		pl->y++;
 		map_regen(map, pl, tmp_p);
-		printf("Steps : %d\n", ++pl->step);
+		ft_printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
 	}
 }
@@ -95,7 +95,7 @@ void	move_d(t_player *pl, t_bound b, t_map *map, t_vars *vars)
 		tmp_p.y = pl->y;
 		pl->x++;
 		map_regen(map, pl, tmp_p);
-		printf("Steps : %d\n", ++pl->step);
+		ft_printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
 	}
 }

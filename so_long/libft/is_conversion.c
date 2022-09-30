@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   is_conversion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 13:51:12 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/29 16:47:17 by pjang            ###   ########.fr       */
+/*   Created: 2022/05/31 03:11:35 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/29 16:15:47 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+int	is_conversion(char c)
 {
-	char	*buf;
-	char	*join;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	join = (char *)malloc(sizeof(char) * \
-		(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
-	buf = join;
-	while (*s1)
-		*buf++ = *s1++;
-	while (*s2)
-		*buf++ = *s2++;
-	*buf = '\0';
-	return (join);
+	if (c == 'c')
+		return (1);
+	else if (c == 's')
+		return (1);
+	else if (c == 'p')
+		return (1);
+	else if (c == 'd')
+		return (1);
+	else if (c == 'i')
+		return (1);
+	else if (c == 'u')
+		return (1);
+	else if (c == 'x')
+		return (1);
+	else if (c == 'X')
+		return (1);
+	else if (c == '%')
+		return (1);
+	return (0);
 }
