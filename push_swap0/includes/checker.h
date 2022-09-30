@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_re.c                                         :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 08:31:53 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 20:21:50 by pjang            ###   ########.fr       */
+/*   Created: 2022/09/30 21:41:33 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/30 22:27:33 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#ifndef	CHECKER_H
+# define CHECKER_H
+# include "push_swap.h"
+# define MAX_READ (1000000)
 
-void	print_re(t_vars *vars, const char *str)
+typedef struct s_cmds
 {
-	char	*temp;
+	int		flen;
+	int		size;
+	char	*cmd_buf;
+	char	**cmds;
+}					t_cmds;
 
-	temp = ft_strdup(vars->print);
-	free(vars->print);
-	vars->print = NULL;
-	vars->print = ft_strjoin((const char *)temp, str);
-	free(temp);
-	temp = NULL;
-}
+void	init_cmds(t_cmds *cmds);
+void	get_cmds(t_cmds *cmds);
+void	checker(t_cmds *cmds, t_list **a, t_list **b);
+
+#endif

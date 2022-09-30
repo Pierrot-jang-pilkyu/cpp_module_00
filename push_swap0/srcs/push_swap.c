@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 00:11:14 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 14:09:41 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/30 21:18:59 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	a_to_b(t_list **a, t_list **b, t_vars *vars)
 {
-	int		f_size;
 	t_data	*dummy;
 	t_list	*temp;
 
-	f_size = ft_lstsize(*a);
 	while (ft_lstsize(*a) != 0)
 	{
 		temp = *a;
@@ -28,10 +26,10 @@ void	a_to_b(t_list **a, t_list **b, t_vars *vars)
 		else if (dummy->order < (vars->pivot + vars->k))
 		{
 			pb(a, b, vars);
-			if (*b && ft_lstsize(*b) != 1)
+			if (ft_lstsize(*b) != 1)
 				rb(b, vars);
 		}
-		else if ((vars->pivot + vars->k) <= dummy->order && ft_lstsize(*b) != 1)
+		else if ((vars->pivot + vars->k) <= dummy->order && ft_lstsize(*a) != 1)
 		{
 			ra(a, vars);
 			vars->pivot--;
@@ -42,11 +40,9 @@ void	a_to_b(t_list **a, t_list **b, t_vars *vars)
 
 void	a_to_b2(t_list **a, t_list **b, t_vars *vars)
 {
-	int		f_size;
 	t_data	*dummy;
 	t_list	*temp;
 
-	f_size = ft_lstsize(*a);
 	while (ft_lstsize(*a) != 0)
 	{
 		temp = *a;
@@ -56,10 +52,10 @@ void	a_to_b2(t_list **a, t_list **b, t_vars *vars)
 		else if (dummy->order < (vars->pivot + vars->k))
 		{
 			pb(a, b, vars);
-			if (*b && ft_lstsize(*b) != 1)
+			if (ft_lstsize(*b) != 1)
 				rb(b, vars);
 		}
-		else if ((vars->pivot + vars->k) <= dummy->order && ft_lstsize(*b) != 1)
+		else if ((vars->pivot + vars->k) <= dummy->order && ft_lstsize(*a) != 1)
 		{
 			rra(a, vars);
 			vars->pivot--;

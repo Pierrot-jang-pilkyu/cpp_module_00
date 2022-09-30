@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_re.c                                         :+:      :+:    :+:   */
+/*   init_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 08:31:53 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 20:21:50 by pjang            ###   ########.fr       */
+/*   Created: 2022/09/30 21:55:27 by pjang             #+#    #+#             */
+/*   Updated: 2022/09/30 22:03:31 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
-void	print_re(t_vars *vars, const char *str)
+void	init_cmds(t_cmds *cmds)
 {
-	char	*temp;
-
-	temp = ft_strdup(vars->print);
-	free(vars->print);
-	vars->print = NULL;
-	vars->print = ft_strjoin((const char *)temp, str);
-	free(temp);
-	temp = NULL;
+	cmds->cmd_buf = NULL;
+	cmds->cmds = NULL;
+	cmds->flen = 0;
+	cmds->size = 0;
 }

@@ -6,7 +6,7 @@
 #    By: pjang <student.42seoul.kr>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/23 03:49:53 by pjang             #+#    #+#              #
-#    Updated: 2022/09/30 08:55:53 by pjang            ###   ########.fr        #
+#    Updated: 2022/09/30 22:29:17 by pjang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS	= 	./srcs/check.c \
 			./srcs/small_size.c \
 			./srcs/swap.c \
 			./srcs/print_re.c \
-			./srcs/put_result.c 
+			./srcs/put_result.c
 
 OBJS	= $(SRCS:.c=.o)
 RM		= rm -f

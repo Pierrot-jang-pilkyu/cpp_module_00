@@ -6,27 +6,27 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:28:03 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 14:08:16 by pjang            ###   ########.fr       */
+/*   Updated: 2022/09/30 21:19:37 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_data(void *content)
-{
-	t_data	*d;
+// void	print_data(void *content)
+// {
+// 	t_data	*d;
 
-	d = (t_data *)content;
-	ft_printf("%d ", d->num);
-}
+// 	d = (t_data *)content;
+// 	ft_printf("%d ", d->num);
+// }
 
-void	print_order(void *content)
-{
-	t_data	*d;
+// void	print_order(void *content)
+// {
+// 	t_data	*d;
 
-	d = (t_data *)content;
-	ft_printf("%d ", d->order);
-}
+// 	d = (t_data *)content;
+// 	ft_printf("%d ", d->order);
+// }
 
 void	list_copy(t_list **dst, t_list **src)
 {
@@ -57,8 +57,6 @@ int	main(int argc, char *argv[])
 		push_swap(&a, &b, &v[0]);
 		init_vars(ac, &v[1]);
 		push_swap2(&ac, &b, &v[1]);
-		ft_printf("\n\nstr : %s\n", v[0].print);
-		ft_printf("\n\nstr : %s\n", v[1].print);
 		if (v[0].cmds < v[1].cmds)
 			put_reuslt(&v[0]);
 		else
@@ -67,6 +65,9 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
+		// ft_printf("\n\na : ");
+		// ft_lstiter(a, print_data);
+		// ft_printf("\n");
 		// ft_lstiter(a, print_data);
 		// ft_printf("\n");
 		// ft_printf("\n\na : ");
