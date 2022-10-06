@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 01:44:13 by pjang             #+#    #+#             */
-/*   Updated: 2022/10/07 04:59:42 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 05:12:17 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+# include "../includes/so_long.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -28,42 +29,27 @@
 # define KEY_S		1
 # define KEY_D		2
 
-typedef struct s_point
-{
-	int		x;
-	int		y;
-	char	map_c;
-}					t_point;
-
-typedef struct s_img
-{
-	void	*img;
-	int		width;
-	int		height;
-}					t_img;
-
-typedef struct s_bound
-{
-	char	w;
-	char	a;
-	char	s;
-	char	d;
-}					t_bound;
-
-typedef struct s_player
+typedef struct s_playerb
 {
 	int	success_flag;
 	int	x;
 	int	y;
+	int	pixel_x;
+	int	pixel_y;
 	int	step;
-}					t_player;
+	int	px_step;
+	int	py_step;
+}					t_playerb;
 
-typedef struct s_map
+typedef struct s_mapb
 {
 	t_list		*map;
+	char		**b_map;
 	const char	*filename;
 	int			row;
 	int			col;
+	int			pl_x;
+	int			pl_y;
 	int			p_num;
 	int			c_num;
 	int			e_num;
@@ -72,34 +58,22 @@ typedef struct s_map
 	t_img		img_col;
 	t_img		img_play;
 	t_img		img_esc;
-}					t_map;
-
-typedef struct s_vars
-{
-	void		*mlx;
-	void		*win;
-	t_map		*map;
-	t_player	*player;
-}					t_vars;
+}					t_mapb;
 
 // struct init
-void	inits(t_player *player, t_map *map, t_vars *vars);
+void	inits(t_playerb *player, t_mapb *map, t_vars *vars);
 
 // parsing
-int		get_linelen(char *map_line);
-void	get_map(t_map *map);
-void	map_check(t_map *map);
-void	get_player_position(t_map *map, t_player *player);
+void	get_map(t_mapb *map);
+void	get_player_position(t_mapb *map, t_playerb *player);
 
 // game execution
-int		game_close(t_vars *vars);
-int		game_clear(t_player *player);
-void	map_regen(t_map *map, t_player *pl, t_point p);
-void	move_w(t_player *pl, t_bound b, t_map *map, t_vars *vars);
-void	move_a(t_player *pl, t_bound b, t_map *map, t_vars *vars);
-void	move_s(t_player *pl, t_bound b, t_map *map, t_vars *vars);
-void	move_d(t_player *pl, t_bound b, t_map *map, t_vars *vars);
-void	ft_mlx_img(t_map *map, t_player *player, t_vars *vars);
+void	map_regen(t_mapb *map, t_playerb *pl, t_point p);
+void	move_w(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars);
+void	move_a(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars);
+void	move_s(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars);
+void	move_d(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars);
+void	ft_mlx_img(t_mapb *map, t_playerb *player, t_vars *vars);
 int		keypress(int keycode, t_vars *vars);
 
 void	put_error(char *message);

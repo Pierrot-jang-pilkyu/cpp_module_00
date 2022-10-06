@@ -6,7 +6,7 @@
 #    By: pjang <student.42seoul.kr>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/23 03:49:53 by pjang             #+#    #+#              #
-#    Updated: 2022/09/29 16:23:41 by pjang            ###   ########.fr        #
+#    Updated: 2022/10/07 04:46:32 by pjang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,10 @@ SRCS	= 	./src/ft_mlx_img.c \
 			./src/map_check.c \
 			./src/map_regen.c \
 			./src/move.c \
-			./src/put_error.c
+			./src/move_bonus.c \
+			./src/put_error.c \
+			./src/ft_mlx_img_bonus.c \
+			./src/get_map_bonus.c
 
 OBJS	= $(SRCS:.c=.o)
 RM		= rm -f
