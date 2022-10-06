@@ -6,11 +6,17 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 01:04:01 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 21:24:11 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/06 23:14:28 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	nullchar_check(char *str)
+{
+	if (ft_strncmp(str, "", 2) == 0)
+		put_error();
+}
 
 void	check_char(int ac, char *av[])
 {
@@ -22,19 +28,17 @@ void	check_char(int ac, char *av[])
 	s_flag = 0;
 	while (++i < ac)
 	{
+		nullchar_check(av[i]);
 		j = -1;
 		while (av[i][++j])
 		{
-			if (!ft_isdigit(av[i][j]))
+			if ((!ft_isdigit(av[i][j])) && av[i][j] != ' ')
 			{
-				if (av[i][j] != ' ')
-				{
-					if (is_sign(av[i][j]) && \
-						(!(j - s_flag == 1) || s_flag == 0))
-						s_flag = j;
-					else
-						put_error();
-				}
+				if (is_sign(av[i][j]) &&
+					(!(j - s_flag == 1) || s_flag == 0))
+					s_flag = j;
+				else
+					put_error();
 			}
 		}
 		s_flag = 0;

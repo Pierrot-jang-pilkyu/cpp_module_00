@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:27:45 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 21:22:45 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/06 23:12:31 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void		check_order(t_list *a);
 void		check_char(int ac, char *av[]);
 long long	ft_atol(const char *str);
 void		parsing(t_list **a, int ac, char *av[]);
+void		safety_free(char **split);
+int			get_strs(const char *s, char c);
 void		put_reuslt(t_vars *vars);
 void		print_re(t_vars *vars, const char *str);
 

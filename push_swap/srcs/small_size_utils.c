@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 03:46:52 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 05:30:56 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/06 23:35:35 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	three_el(t_list **a, int m_idx, t_vars *vars)
 	{
 		if (arr[1] == 2)
 		{
-			ra(a, vars);
 			sa(a, vars);
-			rra(a, vars);
+			ra(a, vars);
 		}
 	}
 	three_el_2(a, arr, vars);

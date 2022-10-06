@@ -5,77 +5,65 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pjang <student.42seoul.kr>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/23 03:49:53 by pjang             #+#    #+#              #
-#    Updated: 2022/10/06 23:11:08 by pjang            ###   ########.fr        #
+#    Created: 2022/10/06 20:33:53 by pjang             #+#    #+#              #
+#    Updated: 2022/10/06 22:03:57 by pjang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= push_swap
+NAME	= checker
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 
-LIBC	=	-L ./libft/ -lft
-LFT		=	libft/libft.a
-SRCS	= 	./srcs/check.c \
-			./srcs/ft_atol.c \
-			./srcs/get_index.c \
-			./srcs/init.c \
-			./srcs/is_integer.c \
-			./srcs/lst_new.c \
-			./srcs/parsing.c \
-			./srcs/push_swap.c \
-			./srcs/main.c \
-			./srcs/push.c \
-			./srcs/rotate.c \
-			./srcs/rrotate.c \
-			./srcs/put_error.c \
-			./srcs/small_size_utils.c \
-			./srcs/small_size.c \
-			./srcs/swap.c \
-			./srcs/print_re.c \
-			./srcs/put_result.c
+INC		=	-I ../includes/
+LIBC	=	-L ../libft/ -lft
+LFT		=	../libft/libft.a
+SRCS	= 	../srcs/check.c \
+			../srcs/ft_atol.c \
+			../srcs/get_index.c \
+			../srcs/init.c \
+			../srcs/is_integer.c \
+			../srcs/lst_new.c \
+			../srcs/parsing.c \
+			../srcs/push_swap.c \
+			../srcs/push.c \
+			../srcs/rotate.c \
+			../srcs/rrotate.c \
+			../srcs/put_error.c \
+			../srcs/small_size_utils.c \
+			../srcs/small_size.c \
+			../srcs/swap.c \
+			../srcs/print_re.c \
+			../srcs/put_result.c \
+			checker.c \
+			get_cmds.c \
+			init_cmds.c \
+			main.c
 
 OBJS	= $(SRCS:.c=.o)
 RM		= rm -f
 
-BONUS	= checker
-
-ifdef WITH_BONUS
-all : $(LFT) $(NAME) $(BONUS)
-else
 all : $(LFT) $(NAME)
-endif
-
-$(BONUS) : 
-	@make -s all -C bonus
-	@cp bonus/checker $@
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBC)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBC) $(INC) -g
 
 $(LFT) :
-	@make -s bonus -C libft
+	@make -s bonus -C ../libft
 	@echo "Libft Success."
-
-bonus :
-	@make WITH_BONUS=1 all
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	@make -s $@ -C libft
-	@make -s $@ -C bonus
+	@make -s $@ -C ../libft
 	$(RM) $(OBJS)
 	@echo "Object files removed."
 
 fclean : clean
-	@make -s $@ -C libft
-	@make -s $@ -C bonus
+	@make -s $@ -C ../libft
 	$(RM) $(NAME)
-	$(RM) $(BONUS)
 	@echo "Executable file removed."
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re
+.PHONY : all clean fclean re

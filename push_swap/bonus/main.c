@@ -5,46 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 17:28:03 by pjang             #+#    #+#             */
-/*   Updated: 2022/10/06 23:14:51 by pjang            ###   ########.fr       */
+/*   Created: 2022/09/30 21:32:16 by pjang             #+#    #+#             */
+/*   Updated: 2022/10/06 22:46:37 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
-void	list_copy(t_list **dst, t_list **src)
+void	print_content(void *content)
 {
-	t_list	*ts;
+	t_data	*td;
 
-	ts = *src;
-	while (ts)
-	{
-		ft_lstadd_back(dst, lst_new(ts->content));
-		ts = ts->next;
-	}
+	td = (t_data *)content;
+	ft_printf("%d ", td->num);
+}
+
+void	print_list(t_list *a, char c)
+{
+	ft_printf("\n%c : ", c);
+	ft_lstiter(a, print_content);
+	ft_printf("\n");
 }
 
 int	main(int argc, char *argv[])
 {
-	t_vars	v[2];
+	int		i;
+	t_cmds	cmds;
 	t_list	*a;
-	t_list	*ac;
 	t_list	*b;
 
+	b = NULL;
 	if (argc != 1)
 	{
 		check_char(argc, argv);
 		parsing(&a, argc, argv);
 		check_order(a);
-		list_copy(&ac, &a);
-		init_vars(a, &v[0]);
-		push_swap(&a, &b, &v[0]);
-		init_vars(ac, &v[1]);
-		push_swap2(&ac, &b, &v[1]);
-		if (v[0].cmds < v[1].cmds)
-			put_reuslt(&v[0]);
-		else
-			put_reuslt(&v[1]);
+		init_cmds(&cmds);
+		cmds.cmd_buf = (char *)malloc(sizeof(char) * MAX_READ);
+		if (!cmds.cmd_buf)
+			put_error();
+		i = 0;
+		cmds.flen = read(0, cmds.cmd_buf, sizeof(cmds.cmd_buf));
+		while (cmds.flen != 0 && cmds.flen != -1 && cmds.flen < MAX_READ)
+		{
+			i += cmds.flen;
+			cmds.flen = read(0, &cmds.cmd_buf[i], sizeof(cmds.cmd_buf));
+		}
+		get_cmds(&cmds);
+		checker(&cmds, &a, &b);
 	}
-	return (0);
 }
