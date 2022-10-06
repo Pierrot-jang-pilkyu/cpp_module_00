@@ -6,26 +6,11 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:32:16 by pjang             #+#    #+#             */
-/*   Updated: 2022/10/06 22:46:37 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 02:21:34 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
-
-void	print_content(void *content)
-{
-	t_data	*td;
-
-	td = (t_data *)content;
-	ft_printf("%d ", td->num);
-}
-
-void	print_list(t_list *a, char c)
-{
-	ft_printf("\n%c : ", c);
-	ft_lstiter(a, print_content);
-	ft_printf("\n");
-}
 
 int	main(int argc, char *argv[])
 {
@@ -39,7 +24,6 @@ int	main(int argc, char *argv[])
 	{
 		check_char(argc, argv);
 		parsing(&a, argc, argv);
-		check_order(a);
 		init_cmds(&cmds);
 		cmds.cmd_buf = (char *)malloc(sizeof(char) * MAX_READ);
 		if (!cmds.cmd_buf)
@@ -51,6 +35,7 @@ int	main(int argc, char *argv[])
 			i += cmds.flen;
 			cmds.flen = read(0, &cmds.cmd_buf[i], sizeof(cmds.cmd_buf));
 		}
+		sort_checker(&cmds, &a);
 		get_cmds(&cmds);
 		checker(&cmds, &a, &b);
 	}

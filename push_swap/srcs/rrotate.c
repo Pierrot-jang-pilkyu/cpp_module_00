@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 22:10:50 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 08:42:36 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 00:59:10 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ void	rra(t_list **a, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *a;
-	ty = get_before(tx);
-	tz = ft_lstlast(tx);
-	ty->next = NULL;
-	tz->next = tx;
-	*a = tz;
-	vars->cmds++;
+	if (*a)
+	{
+		tx = *a;
+		ty = get_before(tx);
+		tz = ft_lstlast(tx);
+		ty->next = NULL;
+		tz->next = tx;
+		*a = tz;
+		vars->cmds++;
+	}
 	print_re(vars, "rra\n");
 }
 
@@ -48,12 +51,15 @@ void	rrb(t_list **b, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *b;
-	ty = get_before(tx);
-	tz = ft_lstlast(tx);
-	ty->next = NULL;
-	tz->next = tx;
-	*b = tz;
+	if (*b)
+	{
+		tx = *b;
+		ty = get_before(tx);
+		tz = ft_lstlast(tx);
+		ty->next = NULL;
+		tz->next = tx;
+		*b = tz;
+	}
 	vars->cmds++;
 	print_re(vars, "rrb\n");
 }
@@ -64,18 +70,24 @@ void	rrr(t_list **a, t_list **b, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *a;
-	ty = get_before(tx);
-	tz = ft_lstlast(tx);
-	ty->next = NULL;
-	tz->next = tx;
-	*a = tz;
-	tx = *b;
-	ty = get_before(tx);
-	tz = ft_lstlast(tx);
-	ty->next = NULL;
-	tz->next = tx;
-	*b = tz;
+	if (*a)
+	{
+		tx = *a;
+		ty = get_before(tx);
+		tz = ft_lstlast(tx);
+		ty->next = NULL;
+		tz->next = tx;
+		*a = tz;
+	}
+	if (*b)
+	{
+		tx = *b;
+		ty = get_before(tx);
+		tz = ft_lstlast(tx);
+		ty->next = NULL;
+		tz->next = tx;
+		*b = tz;
+	}
 	vars->cmds++;
 	print_re(vars, "rrr\n");
 }

@@ -6,27 +6,11 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:28:03 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 21:19:37 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/06 23:14:51 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	print_data(void *content)
-// {
-// 	t_data	*d;
-
-// 	d = (t_data *)content;
-// 	ft_printf("%d ", d->num);
-// }
-
-// void	print_order(void *content)
-// {
-// 	t_data	*d;
-
-// 	d = (t_data *)content;
-// 	ft_printf("%d ", d->order);
-// }
 
 void	list_copy(t_list **dst, t_list **src)
 {
@@ -64,12 +48,3 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
-
-		// ft_printf("\n\na : ");
-		// ft_lstiter(a, print_data);
-		// ft_printf("\n");
-		// ft_lstiter(a, print_data);
-		// ft_printf("\n");
-		// ft_printf("\n\na : ");
-		// ft_lstiter(a, print_order);
-		// ft_printf("\n");

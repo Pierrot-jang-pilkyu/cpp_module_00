@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:41:33 by pjang             #+#    #+#             */
-/*   Updated: 2022/10/06 23:15:58 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 02:16:19 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ typedef struct s_cmds
 void	init_cmds(t_cmds *cmds);
 void	get_cmds(t_cmds *cmds);
 void	checker(t_cmds *cmds, t_list **a, t_list **b);
+void	sort_checker(t_cmds *cmds, t_list **a);
 
 #endif

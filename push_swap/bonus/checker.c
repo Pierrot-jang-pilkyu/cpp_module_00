@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:41:01 by pjang             #+#    #+#             */
-/*   Updated: 2022/10/06 22:46:50 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 02:16:00 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,29 @@ int	check_order2(t_list *a)
 		a = a->next;
 	}
 	return (1);
+}
+
+void	sort_checker(t_cmds *cmds, t_list **a)
+{
+	int	i;
+
+	i = -1;
+	while (cmds->cmd_buf[++i])
+	{
+		if (cmds->cmd_buf[i] == '\n')
+		{
+			if (cmds->cmd_buf[i + 1] == '\n')
+				put_error();
+		}
+	}
+	if ((!cmds->cmd_buf) || (*cmds->cmd_buf == '\0'))
+	{
+		if (check_order2(*a))
+		{
+			ft_printf("OK\n");
+			exit(0);
+		}
+	}
 }
 
 void	checker(t_cmds *cmds, t_list **a, t_list **b)

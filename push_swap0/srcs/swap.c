@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:19:52 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 08:42:55 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 01:20:49 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ void	sa(t_list **a, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *a;
-	ty = tx->next;
-	tz = ty->next;
-	tx->next = tz;
-	ty->next = tx;
-	*a = ty;
+	if (*a)
+	{
+		tx = *a;
+		ty = tx->next;
+		tz = ty->next;
+		tx->next = tz;
+		ty->next = tx;
+		*a = ty;
+	}
 	vars->cmds++;
 	print_re(vars, "sa\n");
 }
@@ -34,12 +37,15 @@ void	sb(t_list **b, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *b;
-	ty = tx->next;
-	tz = ty->next;
-	tx->next = tz;
-	ty->next = tx;
-	*b = ty;
+	if (*b)
+	{
+		tx = *b;
+		ty = tx->next;
+		tz = ty->next;
+		tx->next = tz;
+		ty->next = tx;
+		*b = ty;
+	}
 	vars->cmds++;
 	print_re(vars, "sb\n");
 }
@@ -50,18 +56,24 @@ void	ss(t_list **a, t_list **b, t_vars *vars)
 	t_list	*ty;
 	t_list	*tz;
 
-	tx = *a;
-	ty = tx->next;
-	tz = ty->next;
-	tx->next = tz;
-	ty->next = tx;
-	*a = ty;
-	tx = *b;
-	ty = tx->next;
-	tz = ty->next;
-	tx->next = tz;
-	ty->next = tx;
-	*b = ty;
+	if (*a)
+	{
+		tx = *a;
+		ty = tx->next;
+		tz = ty->next;
+		tx->next = tz;
+		ty->next = tx;
+		*a = ty;
+	}
+	if (*b)
+	{
+		tx = *b;
+		ty = tx->next;
+		tz = ty->next;
+		tx->next = tz;
+		ty->next = tx;
+		*b = ty;
+	}
 	vars->cmds++;
 	print_re(vars, "ss\n");
 }

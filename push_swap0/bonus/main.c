@@ -6,7 +6,7 @@
 /*   By: pjang <student.42seoul.kr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:32:16 by pjang             #+#    #+#             */
-/*   Updated: 2022/09/30 22:28:48 by pjang            ###   ########.fr       */
+/*   Updated: 2022/10/07 02:21:04 by pjang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main(int argc, char *argv[])
 	t_list	*a;
 	t_list	*b;
 
+	b = NULL;
 	if (argc != 1)
 	{
 		check_char(argc, argv);
 		parsing(&a, argc, argv);
-		check_order(a);
 		init_cmds(&cmds);
 		cmds.cmd_buf = (char *)malloc(sizeof(char) * MAX_READ);
 		if (!cmds.cmd_buf)
@@ -35,6 +35,7 @@ int	main(int argc, char *argv[])
 			i += cmds.flen;
 			cmds.flen = read(0, &cmds.cmd_buf[i], sizeof(cmds.cmd_buf));
 		}
+		sort_checker(&cmds, &a);
 		get_cmds(&cmds);
 		checker(&cmds, &a, &b);
 	}
