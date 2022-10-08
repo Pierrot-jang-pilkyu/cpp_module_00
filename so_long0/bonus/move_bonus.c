@@ -12,7 +12,7 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	putstr_to_window(t_vars *vars, t_playerb *pl)
+void	putstr_to_window(t_varsb *vars, t_playerb *pl)
 {
 	char	*str;
 
@@ -22,7 +22,7 @@ void	putstr_to_window(t_vars *vars, t_playerb *pl)
 	str = NULL;
 }
 
-void	move_w(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
+void	move_w(t_playerb *pl, t_bound b, t_mapb *map, t_varsb *vars)
 {
 	t_point	tmp_p;
 
@@ -38,13 +38,15 @@ void	move_w(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
 		pl->pixel_y--;
 		pl->py_step--;
 		map_regen(map, pl, tmp_p);
+		
 		if (pl->py_step == -16 || pl->py_step == 16)
-			ft_printf("Steps : %d\n", ++pl->step);
+			printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
+		putstr_to_window(vars, pl);
 	}
 }
 
-void	move_a(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
+void	move_a(t_playerb *pl, t_bound b, t_mapb *map, t_varsb *vars)
 {
 	t_point	tmp_p;
 
@@ -61,12 +63,13 @@ void	move_a(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
 		pl->px_step--;
 		map_regen(map, pl, tmp_p);
 		if (pl->px_step == -16 || pl->px_step == 16)
-			ft_printf("Steps : %d\n", ++pl->step);
+			printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
+		putstr_to_window(vars, pl);
 	}
 }
 
-void	move_s(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
+void	move_s(t_playerb *pl, t_bound b, t_mapb *map, t_varsb *vars)
 {
 	t_point	tmp_p;
 
@@ -83,12 +86,13 @@ void	move_s(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
 		pl->py_step++;
 		map_regen(map, pl, tmp_p);
 		if (pl->py_step == -16 || pl->py_step == 16)
-			ft_printf("Steps : %d\n", ++pl->step);
+			printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
+		putstr_to_window(vars, pl);
 	}
 }
 
-void	move_d(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
+void	move_d(t_playerb *pl, t_bound b, t_mapb *map, t_varsb *vars)
 {
 	t_point	tmp_p;
 
@@ -105,7 +109,8 @@ void	move_d(t_playerb *pl, t_bound b, t_mapb *map, t_vars *vars)
 		pl->px_step++;
 		map_regen(map, pl, tmp_p);
 		if (pl->px_step == -16 || pl->px_step == 16)
-			ft_printf("Steps : %d\n", ++pl->step);
+			printf("Steps : %d\n", ++pl->step);
 		ft_mlx_img(map, pl, vars);
+		putstr_to_window(vars, pl);
 	}
 }

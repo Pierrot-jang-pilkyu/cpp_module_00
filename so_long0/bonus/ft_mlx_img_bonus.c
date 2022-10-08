@@ -12,7 +12,21 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	mpitw_b(t_mapb *map, t_playerb *player, t_vars *vars, t_point point)
+void	player_put(t_mapb *map, t_playerb *player, t_varsb *vars)
+{
+	if(player->move_flag)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+			map->img_play.img, player->pixel_x * 4, player->pixel_y * 4);
+	}
+	else
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+			map->img_play.img, player->x * 64, player->y * 64);
+	}
+}
+
+void	mpitw_b(t_mapb *map, t_playerb *player, t_varsb *vars, t_point point)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win, \
 		map->img_base.img, point.x * 64, point.y * 64);
@@ -31,11 +45,10 @@ void	mpitw_b(t_mapb *map, t_playerb *player, t_vars *vars, t_point point)
 		mlx_put_image_to_window(vars->mlx, vars->win, \
 			map->img_esc.img, point.x * 64, point.y * 64);
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, \
-		map->img_play.img, player->pixel_x * 4, player->pixel_y * 4);
+	player_put(map, player, vars);
 }
 
-void	img_to_window_b(t_mapb *map, t_playerb *player, t_vars *vars)
+void	img_to_window_b(t_mapb *map, t_playerb *player, t_varsb *vars)
 {
 	t_point	point;
 	t_list	*temp;
@@ -55,7 +68,7 @@ void	img_to_window_b(t_mapb *map, t_playerb *player, t_vars *vars)
 	}
 }
 
-void	ft_mlx_img(t_mapb *map, t_playerb *player, t_vars *vars)
+void	ft_mlx_img(t_mapb *map, t_playerb *player, t_varsb *vars)
 {
 	char	col[30];
 

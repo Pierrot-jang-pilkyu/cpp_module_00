@@ -12,7 +12,7 @@
 
 #include "../includes/so_long_bonus.h"
 
-void	set_b_map(t_mapb *map, t_point p)
+void	set_b_map(t_mapb *map, t_playerb *pl, t_point p)
 {
 	int	i;
 	int	j;
@@ -23,15 +23,21 @@ void	set_b_map(t_mapb *map, t_point p)
 		j = -1;
 		while (++j < 16)
 		{
-			map->b_map[(p.y * 16) + i][(p.x * 16) + j] = p.map_c;
+			if (pl->move_flag)
+				map->b_map[pl->pixel_y + i][pl->pixel_x + j] = 'P';
+			else
+				map->b_map[(p.y * 16) + i][(p.x * 16) + j] = p.map_c;
 		}
 	}
 	i = -1;
-	while (++i < map->col)
-		map->b_map[(p.y * 16) + i][(map->row * 16)] = '\0';
+	if (!pl->move_flag)
+	{
+		while (++i < map->col)
+			map->b_map[(p.y * 16) + i][(map->row * 16)] = '\0';
+	}
 }
 
-void	get_b_map(t_mapb *map)
+void	get_b_map(t_mapb *map, t_playerb *pl)
 {
 	int		i;
 	t_point	p;
@@ -49,7 +55,7 @@ void	get_b_map(t_mapb *map)
 		while (++p.x < map->row)
 		{
 			p.map_c = *((char *)temp->content + p.x);
-			set_b_map(map, p);
+			set_b_map(map, pl, p);
 		}
 		temp = temp->next;
 	}

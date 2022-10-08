@@ -22,6 +22,7 @@ void	init_img(t_img *img)
 void	init_player(t_playerb *player)
 {
 	player->success_flag = 0;
+	player->move_flag = 0;
 	player->x = 0;
 	player->y = 0;
 	player->pixel_x = 0;
@@ -50,7 +51,7 @@ void	init_map(t_mapb *map)
 	init_img(&map->img_esc);
 }
 
-void	init_vars(t_vars *vars)
+void	init_vars(t_varsb *vars)
 {
 	vars->mlx = NULL;
 	vars->win = NULL;
@@ -58,7 +59,7 @@ void	init_vars(t_vars *vars)
 	vars->player = NULL;
 }
 
-void	inits(t_playerb *player, t_mapb *map, t_vars *vars)
+void	inits(t_playerb *player, t_mapb *map, t_varsb *vars)
 {
 	if (player != NULL)
 		init_player(player);

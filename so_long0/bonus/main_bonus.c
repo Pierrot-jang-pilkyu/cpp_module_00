@@ -23,15 +23,15 @@ void	print_map(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			ft_printf("%c", map[i][j]);
+			printf("%c", map[i][j]);
 			if (j % 16 == 15)
-				ft_printf(" ");
+				printf(" ");
 		}
-		ft_printf("\n");
+		printf("\n");
 		if (i % 16 == 15)
-			ft_printf("\n");
+			printf("\n");
 	}
-	ft_printf("\n");
+	printf("\n");
 }
 
 int	main(int argc, char *argv[])
@@ -39,13 +39,14 @@ int	main(int argc, char *argv[])
 	char		*title;
 	t_mapb		map;
 	t_playerb	player;
-	t_vars		vars;
+	t_varsb		vars;
 
 	if (argc == 2)
 	{
 		inits(&player, &map, &vars);
 		map.filename = argv[1];
 		get_map(&map);
+		get_b_map(&map, &player);
 		get_player_position(&map, &player);
 		title = "ANGEL IN THE HEAVEN";
 		vars.mlx = mlx_init();
