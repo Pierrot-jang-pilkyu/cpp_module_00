@@ -1,23 +1,23 @@
-NAME	=	phonebook
-CLANG	=	clang++
-CFLAGS	=	-Wall -Wextra -Werror
+NAME	= account
+CPP		=	clang++
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
 
-SRCS	= 	./srcs/Contact.cpp \
-			./srcs/PhoneBook.cpp \
-			./srcs/main.cpp
+SRCS	= 	./Account.cpp \
+			./test.cpp
 
-OBJS	= $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
+
 RM		= rm -f
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CLANG) $(CFLAGS) -o $@ $^
+	$(CPP) $(CFLAGS) -o $@ $^
 
 %.o : %.cpp
-	$(CLANG) $(CFLAGS) -c $< -o $@
+	$(CPP) $(CFLAGS) -c $< -o $@
 
-clean : 
+clean :
 	$(RM) $(OBJS)
 	@echo "Object files removed."
 
@@ -27,4 +27,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all bonus clean fclean re

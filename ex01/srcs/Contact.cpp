@@ -4,7 +4,7 @@ Contact::Contact()
 {
 }
 
-Contact::Contact(string firstName, string lastName, string nickName, string phoneNumber,string darkestSecret)
+Contact::Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber,std::string darkestSecret)
 {
 	this->firstName = firstName;
 	this->lastName = lastName;
@@ -13,63 +13,63 @@ Contact::Contact(string firstName, string lastName, string nickName, string phon
 	this->darkestSecret = darkestSecret;
 }
 
-void	Contact::setFirstName(string firstName)
+void	Contact::setFirstName(std::string firstName)
 {
 	this->firstName = firstName;
 }
 
-void	Contact::setLastName(string lastName)
+void	Contact::setLastName(std::string lastName)
 {
 	this->lastName = lastName;
 }
 
-void	Contact::setNickName(string nickName)
+void	Contact::setNickName(std::string nickName)
 {
 	this->nickName = nickName;
 }
 
-void	Contact::setPhoneNumber(string phoneNumber)
+void	Contact::setPhoneNumber(std::string phoneNumber)
 {
 	this->phoneNumber = phoneNumber;
 }
 
-void	Contact::setDarkestSecret(string darkestSecret)
+void	Contact::setDarkestSecret(std::string darkestSecret)
 {
 	this->darkestSecret = darkestSecret;
 }
 
-string	Contact::getFirstName(void)
+std::string	Contact::getFirstName(void)
 {
 	return (this->firstName);
 }
 
-string	Contact::getLastName(void)
+std::string	Contact::getLastName(void)
 {
 	return (this->lastName);
 }
 
-string	Contact::getNickName(void)
+std::string	Contact::getNickName(void)
 {
 	return (this->nickName);
 }
 
-string	Contact::getPhoneNumber(void)
+std::string	Contact::getPhoneNumber(void)
 {
 	return (this->phoneNumber);
 }
 
-string	Contact::getDarkestSecret(void)
+std::string	Contact::getDarkestSecret(void)
 {
 	return (this->darkestSecret);
 }
 
 void	Contact::viewContact(void)
 {
-	cout << "First Name		: " << this->firstName << endl;
-	cout << "Last Name		: " << this->lastName << endl;
-	cout << "Nick Name		: " << this->nickName << endl;
-	cout << "Phone Number		: " << this->phoneNumber << endl;
-	cout << "Darkest Secret		: " << this->darkestSecret << endl;
+	std::cout << "First Name		: " << this->firstName << std::endl;
+	std::cout << "Last Name		: " << this->lastName << std::endl;
+	std::cout << "Nick Name		: " << this->nickName << std::endl;
+	std::cout << "Phone Number		: " << this->phoneNumber << std::endl;
+	std::cout << "Darkest Secret		: " << this->darkestSecret << std::endl;
 }
 
 Contact::~Contact()

@@ -12,40 +12,40 @@ int		PhoneBook::getContactSize(void)
 
 void	PhoneBook::openPhoneBook(PhoneBook &phoneBook)
 {
-	string	cmd;
+	std::string	cmd;
 
 	while (1)
 	{
-		cout << endl << "Wellcome to phonebook." << endl;
-		cout << "Please enter the command [ ADD / SEARCH / EXIT ]: ";
-		getline(cin, cmd);
+		std::cout << std::endl << "Wellcome to phonebook." << std::endl;
+		std::cout << "Please enter the command [ ADD / SEARCH / EXIT ]: ";
+		std::getline(std::cin, cmd);
 		if (cmd.compare("ADD") == 0)
 			addPhoneBook(phoneBook);
 		else if (cmd.compare("SEARCH") == 0)
 			searchPhoneBook(phoneBook);
 		else if (cmd.compare("EXIT") == 0)
 		{
-			cout << endl << "Thank you for using. Good luck." << endl;
+			std::cout << std::endl << "Thank you for using. Good luck." << std::endl;
 			break ;
 		}
 		else
-			cout << endl << "Error : Wrong command. Please must use uppercase character." << endl << endl;
+			std::cout << std::endl << "Error : Wrong command. Please must use uppercase character." << std::endl << std::endl;
 	}
 }
 
 void	PhoneBook::addPhoneBook(PhoneBook &phoneBook)
 {
 	int		idx;
-	string	str[5];
+	std::string	str[5];
 
 	phoneBook.addCount++;
-	cout << endl << endl;
-	cout << "1. Please enter the first name		: "; getline(cin, str[0]);
-	cout << "2. Please enter the last name		: "; getline(cin, str[1]);
-	cout << "3. Please enter the nick name		: "; getline(cin, str[2]);
-	cout << "4. Please enter the phone number	: "; getline(cin, str[3]);
-	cout << "5. Please enter the darkest secret	: "; getline(cin, str[4]);
-	cout << endl << endl;
+	std::cout << std::endl << std::endl;
+	std::cout << "1. Please enter the first name		: "; std::getline(std::cin, str[0]);
+	std::cout << "2. Please enter the last name		: "; std::getline(std::cin, str[1]);
+	std::cout << "3. Please enter the nick name		: "; std::getline(std::cin, str[2]);
+	std::cout << "4. Please enter the phone number	: "; std::getline(std::cin, str[3]);
+	std::cout << "5. Please enter the darkest secret	: "; std::getline(std::cin, str[4]);
+	std::cout << std::endl << std::endl;
 	
 	idx = phoneBook.addCount % 8;
 	phoneBook.contact[idx].setFirstName(str[0]);
@@ -54,44 +54,44 @@ void	PhoneBook::addPhoneBook(PhoneBook &phoneBook)
 	phoneBook.contact[idx].setPhoneNumber(str[3]);
 	phoneBook.contact[idx].setDarkestSecret(str[4]);
 
-	cout << "Your contact has been successfully saved." << endl;
-	cout << endl << endl;
+	std::cout << "Your contact has been successfully saved." << std::endl;
+	std::cout << std::endl << std::endl;
 }
 
 void	PhoneBook::searchPhoneBook(PhoneBook &phoneBook)
 {
 	int		idx;
-	string	str;
+	std::string	str;
 
 	idx = -1;
-	cout << "|------------------Contact------------------|" << endl;
-	cout << "|     index|First Name| Last Name| Nick Name|" << endl;
-	cout << "|-------------------------------------------|" << endl;
+	std::cout << "|------------------Contact------------------|" << std::endl;
+	std::cout << "|     index|First Name| Last Name| Nick Name|" << std::endl;
+	std::cout << "|-------------------------------------------|" << std::endl;
 
 	while (++idx < phoneBook.getContactSize())
 	{
-		cout << "|" << setw(10) << idx;
+		std::cout << "|" << std::setw(10) << idx;
 		phoneBook.printTenChar(phoneBook.contact[idx].getFirstName());
 		phoneBook.printTenChar(phoneBook.contact[idx].getLastName());
 		phoneBook.printTenChar(phoneBook.contact[idx].getNickName());
-		cout << "|" << endl;
+		std::cout << "|" << std::endl;
 	}
 
-	cout << "|-------------------------------------------|" << endl << endl;
+	std::cout << "|-------------------------------------------|" << std::endl << std::endl;
 
 	if (phoneBook.getContactSize() == 0)
 		return ;
 	while (1)
 	{
-		cout << "Please enter the index of the contact you want to see [0 ~ 7] : "; getline(cin, str);
+		std::cout << "Please enter the index of the contact you want to see [0 ~ 7] : "; std::getline(std::cin, str);
 		if (std::stoi(str) > 7)
-			cout << "Wrong Input data. " << endl << endl;
+			std::cout << "Wrong Input data. " << std::endl << std::endl;
 		else
 		{
 			idx = std::stoi(str);
 			if (idx > phoneBook.getContactSize() - 1)
 			{
-				cout << "Can't search to the index in Phonebook." << endl;
+				std::cout << "Can't search to the index in Phonebook." << std::endl;
 				break ;
 			}
 			phoneBook.contact[idx].viewContact();
@@ -101,12 +101,12 @@ void	PhoneBook::searchPhoneBook(PhoneBook &phoneBook)
 
 }
 
-void	PhoneBook::printTenChar(string str)
+void	PhoneBook::printTenChar(std::string str)
 {
 	if (str.size() <= 10)
-		cout << "|" << setw(10) << str;
+		std::cout << "|" << std::setw(10) << str;
 	else
-		cout << "|" << setw(10) << str.substr(0, 9) << ".";
+		std::cout << "|" << std::setw(10) << str.substr(0, 9) << ".";
 }
 
 PhoneBook::~PhoneBook()

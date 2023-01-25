@@ -4,34 +4,27 @@
 # include <string>
 # include <iomanip>
 
-using	std::cout;
-using	std::cin;
-using	std::endl;
-using	std::string;
-using	std::getline;
-using	std::setw;
-
 class Contact
 {
 private:
-	string	firstName;
-	string	lastName;
-	string	nickName;
-	string	phoneNumber;
-	string	darkestSecret;
+	std::string	firstName;
+	std::string	lastName;
+	std::string	nickName;
+	std::string	phoneNumber;
+	std::string	darkestSecret;
 public:
 	Contact();
-	Contact(string firstName, string lastName, string nickName, string phoneNumber,string darkestSecret);
-	void	setFirstName(string firstName);
-	void	setLastName(string lastName);
-	void	setNickName(string nickName);
-	void	setPhoneNumber(string phoneNumber);
-	void	setDarkestSecret(string firstName);
-	string	getFirstName(void);
-	string	getLastName(void);
-	string	getNickName(void);
-	string	getPhoneNumber(void);
-	string	getDarkestSecret(void);
+	Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber,std::string darkestSecret);
+	void	setFirstName(std::string firstName);
+	void	setLastName(std::string lastName);
+	void	setNickName(std::string nickName);
+	void	setPhoneNumber(std::string phoneNumber);
+	void	setDarkestSecret(std::string firstName);
+	std::string	getFirstName(void);
+	std::string	getLastName(void);
+	std::string	getNickName(void);
+	std::string	getPhoneNumber(void);
+	std::string	getDarkestSecret(void);
 	void	viewContact(void);
 	~Contact();
 };

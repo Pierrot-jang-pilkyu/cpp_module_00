@@ -14,7 +14,7 @@ public:
 	void	openPhoneBook(PhoneBook &phoneBook);
 	void	addPhoneBook(PhoneBook &phoneBook);
 	void	searchPhoneBook(PhoneBook &phoneBook);
-	void	printTenChar(string str);
+	void	printTenChar(std::string str);
 	~PhoneBook();
 };
 
